@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer"> <!-- O angular reconhece somente a area dentro da tag que possui ng-app-->
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/angular.js"></script>
+		<script src="scripts/script.js"></script>
+		<script src="scripts/github.js"></script>
+		<title>Estudo AngularJS</title>
+	</head>
+	<body ng-controller="MainController">
+		<h2>{{message}}</h2>
+		<div>Editor online interessante: <a href="http://plnkr.co/" target="_blank">Plunker</a></div>
+		<div>
+			<div>{{error}}</div>
+			
+			{{countdown}}
+			<form name="searchUser" ng-submit="search(username)">
+				<input type="search" required placeholder="Username to find" ng-model="username"/>
+				<input type="submit" value="Search">
+				<!--<input type="submit" value="Search" ng-click="search(username)"> -->
+			</form>
+			<!-- <div ng-include="'detalhesusuario.html'" ng-show="user"> </div> --> <!-- inclui um arquivo externo na pagina, só funciona dentro de um server-->			
+			<div ng-show="user" id="userDetails">		
+				<h3>{{user.name}}</h3>
+				Link: <a href="{{user.html_url}}" target="_blank">{{user.html_url}}</a><br/>
+				<img ng-src="{{user.avatar_url}}" title="{{user.name}}" height="80"><br/>
+				Ordenar por:
+				<select ng-model="reposOrderBy">
+					<option value="+name">Nome</option>
+					<option value="-stargazers_count">Estrelas</option>
+					<option value="+language">Linguagem</option>
+				</select>
+			</div>
+
+			<table ng-show="user">
+				<thead>
+					<tr>
+						<th>Nome</th>
+						<th>Estrelas</th>
+						<th>Linguagem</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr ng-repeat="repo in repos | orderBy: reposOrderBy"> <!-- faz um foreach dentro do array de repositorios e repete a tag e subtags-->
+						<td>{{repo.name}}</td>
+						<td>{{repo.stargazers_count | number}}</td>
+						<td>{{repo.language}}</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>
