@@ -1,8 +1,9 @@
 (function() {
 
-	var app = angular.module("githubViewer", []); //Uma boa prática é separar esse código e controllers em .js diferentes, como app.js e maincontroller.js
+	var app = angular.module("githubViewer"); //Pega a referencia do modulo criado em app.js
 
-	var MainController = function($scope, github, $interval, $log, $anchorScroll, $location) {
+	 //Uma boa prática é separar os controllers em .js diferentes, como e maincontroller.js
+	var MainController = function($scope, $interval, $location) {
 		/*
 		var person = {
 			firstName: "Bruno",
@@ -20,6 +21,7 @@
 		var onRepos = function(data) {
 			$scope.repos = data;
 			$location.hash("userDetails");
+			//E necessario colocar o $anchorScroll nos parametros do Controller (services)
 			$anchorScroll();
 		};
 
@@ -40,7 +42,9 @@
 		};
 
 		$scope.search = function(username) {
-			$log.info("Buscando por: " + username);
+			//E necessario colocar o $log nos parametrod do Controller (services)
+			//$log.info("Buscando por: " + username);
+			
 			//Faz uma requisição ao servidor e quando for atendida, chamar a primeira função (caso sucesso) ou a segunda função (caso erro)
 			github.getUser(username).then(onUserComplete, onError);
 			if(countdownInterval) {

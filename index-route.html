@@ -1,26 +1,22 @@
 <!DOCTYPE html>
-<!-- Em caso de erro, utilizar a versao mais atualizada: index-route.html-->
 <html ng-app="githubViewer"> <!-- O angular reconhece somente a area dentro da tag que possui ng-app-->
 	<head>
 		<meta charset="UTF-8">
 		<script src="scripts/angular.js"></script>
+		<script src="scripts/angular-route.js"></script>
 		<script src="scripts/app.js"></script>
-		<script src="scripts/script.js"></script>		
+		<script src="scripts/MainController.js"></script>		
 		<script src="scripts/github.js"></script>
 		<title>Estudo AngularJS</title>
 	</head>
+
+	<body>
+		<h1>Github Viewer</h1>
+		<div ng-view></div>
+	</body>
+
 	<body ng-controller="MainController">
-		<h2>{{message}}</h2>
-		<div>Editor online interessante: <a href="http://plnkr.co/" target="_blank">Plunker</a></div>
-		<div>
-			<div>{{error}}</div>
-			
-			{{countdown}}
-			<form name="searchUser" ng-submit="search(username)">
-				<input type="search" required placeholder="Username to find" ng-model="username"/>
-				<input type="submit" value="Search">
-				<!--<input type="submit" value="Search" ng-click="search(username)"> -->
-			</form>
+		
 			<!-- <div ng-include="'detalhesusuario.html'" ng-show="user"> </div> --> <!-- inclui um arquivo externo na pagina, só funciona dentro de um server-->			
 			<div ng-show="user" id="userDetails">		
 				<h3>{{user.name}}</h3>
