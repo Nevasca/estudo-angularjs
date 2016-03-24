@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="githubViewer"> <!-- O angular reconhece somente a area dentro da tag que possui ng-app-->
+	<head>
+		<meta charset="UTF-8">
+		<script src="scripts/angular.js"></script>
+		<script src="scripts/angular-route.js"></script>
+		<script src="scripts/app.js"></script>
+		<script src="scripts/github.js"></script>
+		<script src="scripts/MainController.js"></script>	
+		<script src="scripts/UserController.js"></script>	
+		<script src="scripts/RepoController.js"></script>
+		<title>Estudo AngularJS</title>
+	</head>
+
+	<body>
+		<h1>Github Viewer</h1>
+		<div>Editor online interessante: <a href="http://plnkr.co/" target="_blank">Plunker</a></div>
+
+		<div ng-view></div> <!-- Onde o ng route vai carregar os templates-->
+
+</html>

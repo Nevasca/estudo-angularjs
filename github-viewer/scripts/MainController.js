@@ -32,7 +32,7 @@
 				$scope.countdown = null;
 			}
 
-			//
+			$location.path("/user/" + username); //Muda parte da url e coloca o parametro username
 		};
 
 		$scope.username = "nevasca";		

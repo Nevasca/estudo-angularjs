@@ -1,0 +1,22 @@
+<div>
+	<p>{{error}}</p>
+	<h3>{{repos.name}}</h3>
+	<p>{{repos.description}}</p>	
+</div>
+<table>
+	<thead>
+		<tr>
+			<th>Avatar</th>
+			<th>Nome</th>
+			<th>Contribuições</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="contrib in contributors">
+			<td><a href="#/user/{{contrib.login}}"><img ng-src="{{contrib.avatar_url}}" title="{{contrib.login}}" height="80" border="0"></a></td>
+			<td><a href="#/user/{{contrib.login}}">{{contrib.login}}</a></td>
+			<td>{{contrib.contributions}}</td>
+		</tr>
+	<tbody>
+</table>
+<a href="#/user/{{username}}">Ver outro repositório</a>

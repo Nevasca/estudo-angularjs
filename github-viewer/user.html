@@ -1,5 +1,6 @@
 <div>		
 	<h3>{{user.name}}</h3>
+	<p>{{error}}</p>
 	Link: <a href="{{user.html_url}}" target="_blank">{{user.html_url}}</a><br/>
 	<img ng-src="{{user.avatar_url}}" title="{{user.name}}" height="80"><br/>
 	Ordenar por:
@@ -20,9 +21,10 @@
 	</thead>
 	<tbody>
 		<tr ng-repeat="repo in repos | orderBy: reposOrderBy"> <!-- faz um foreach dentro do array de repositorios e repete a tag e subtags-->
-			<td>{{repo.name}}</td>
+			<td><a href="#/repo/{{username}}/{{repo.name}}">{{repo.name}}</a></td>
 			<td>{{repo.stargazers_count | number}}</td>
 			<td>{{repo.language}}</td>
 		</tr>
 	</tbody>
 </table>
+<a href="#/main">Pesquisar outro usuário</a>

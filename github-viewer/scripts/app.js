@@ -9,6 +9,14 @@
 				templateUrl: "main.html",
 				controller: "MainController"
 			})
+			.when("/user/:username", { //Registra mais um novo route, com o parametro username na url (usar ":" para dizer que sera um parametro)
+				templateUrl: "user.html",
+				controller: "UserController"
+			})
+			.when("/repo/:username/:reponame", {
+				templateUrl: "repo.html",
+				controller: "RepoController"
+			})
 			.otherwise({redirectTo: "/main"}); //Se a URL for desconhecida, redirecionar para /main
 	});
 
