@@ -1,0 +1,23 @@
+<div class="panel panel-primary" style="margin-top: 50px">
+	<div class="panel-heading" style="font-size: large">Lista de Produtos</div>			
+	<table class="table">
+		<thead>
+			<tr>
+				<th><button class="btn btn-primary" type="button" ng-click="toggleImagem()">{{mostrarImagem ? "Esconder" : "Mostrar"}} Imagem</button></th>
+				<th>Produto</th>
+				<th>Código</th>
+				<th>Disponível</th>
+				<th>Preço</th>
+			</tr>		
+		</thead>
+		<tbody>
+			<tr ng-repeat="produto in produtos">
+				<td><img ng-if="mostrarImagem" ng-src="{{produto.imagemUrl}}" title="{{produto.nome}}" height="120"></td>
+				<td>{{ produto.nome }}</td>
+				<td>{{ produto.codigo }}</td>
+				<td>{{ produto.dataLancamento | date}}</td>
+				<td>{{ produto.preco | currency:"R$ "}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>		
