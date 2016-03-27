@@ -1,0 +1,32 @@
+<div class="panel panel-primary">
+	<div class="panel-heading" style="font-size: large">{{titulo}}</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="row">
+					<div class="col-md-2">Nome:</div>
+					<div class="col-md-6">{{produto.nome}}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">Codigo:</div>
+					<div class="col-md-6">{{produto.codigo}}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">Lançamento:</div>
+					<div class="col-md-6">{{produto.dataLancamento| date}}</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">Preço:</div>
+					<div class="col-md-6">{{produto.preco | currency:"R$ "}}</div>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<img class="center-block img-responsive" style="width: 200px; margin: 2px;" ng-src="{{produto.imagemUrl}}" title="{{produto.nome}}">
+			</div>
+		</div>
+	</div>
+	<div class="panel-footer">
+		<a class="btn btn-default" ui-sref="produtoLista" style="width: 80px"><i class="glyphicon glyphicon-chevron-left"></i> Voltar</a>
+		<a class="btn btn-primary" ui-sref="produtoEdit({id: produto.id})" style="width: 80px; margin-left: 10px"><i class="glyphicon glyphicon-pencil"></i> Editar</a>
+	</div>
+</div>

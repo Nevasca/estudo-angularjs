@@ -8,15 +8,21 @@
 				<th>Código</th>
 				<th>Disponível</th>
 				<th>Preço</th>
+				<th></th>				
 			</tr>		
 		</thead>
 		<tbody>
 			<tr ng-repeat="produto in produtos">
-				<td><img ng-if="mostrarImagem" ng-src="{{produto.imagemUrl}}" title="{{produto.nome}}" height="120"></td>
-				<td>{{ produto.nome }}</td>
+				<td><a ng-if="mostrarImagem" ui-sref="produtoDetalhes({id: produto.id})">
+					<img ng-src="{{produto.imagemUrl}}" title="{{produto.nome}}" height="120" border="0">
+				</a></td>
+				<td><a ui-sref="produtoDetalhes({id: produto.id})">{{ produto.nome }}</a></td>
 				<td>{{ produto.codigo }}</td>
 				<td>{{ produto.dataLancamento | date}}</td>
 				<td>{{ produto.preco | currency:"R$ "}}</td>
+				<td>
+					<a class="btn btn-primary" ui-sref="produtoEdit.info({id: produto.id})" style="width: 80px; margin-left: 10px"><i class="glyphicon glyphicon-pencil"></i> Editar</a>
+				</td>
 			</tr>
 		</tbody>
 	</table>

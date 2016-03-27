@@ -6,21 +6,21 @@
 	app.run(function($httpBackend) {
 
 		var produtos = [
-			{"id": 0,
+			{"id": 1,
 			 "nome": "Prince of Thorns",
 			 "codigo": "LIVRO-0001",
 			 "dataLancamento": "30/10/2014",
 			 "preco": 54.90,
 			 "imagemUrl": "http://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=5179959&qld=90&l=370&a=-1"
 			},
-			{"id": 1,
+			{"id": 2,
 			 "nome": "King of Thorns",
 			 "codigo": "LIVRO-0002",
 			 "dataLancamento": "15/03/2015",
 			 "preco": 64.90,
 			 "imagemUrl": "http://images.livrariasaraiva.com.br/imagemnet/imagem.aspx/?pro_id=7379531&qld=90&l=370&a=-1"
 			},
-			{"id": 2,
+			{"id": 3,
 			 "nome": "Emperor of Thorns",
 			 "codigo": "LIVRO-0003",
 			 "dataLancamento": "15/09/2015",

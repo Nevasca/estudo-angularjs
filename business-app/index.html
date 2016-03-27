@@ -25,6 +25,8 @@
 
 		<!-- Controllers Produtos-->
 		<script type="text/javascript" src="app/produtos/produtoListaCtrl.js"></script>
+		<script type="text/javascript" src="app/produtos/produtoDetalhesCtrl.js"></script>
+		<script type="text/javascript" src="app/produtos/produtoEditCtrl.js"></script>
 	</head>
 	<body ng-app="gestaoProdutos">
 		<!-- Menu Superior -->
@@ -42,7 +44,7 @@
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
 						<li><a ui-sref="produtoLista">Lista de Produtos</a></li>
-						<li><a ui-sref="produtoEdit({id:0})"><i class="glyphicon glyphicon-plus"></i> Adicionar Produto</a></li>
+						<li><a ui-sref="produtoEdit.info({id:0})"><i class="glyphicon glyphicon-plus"></i> Adicionar Produto</a></li>
 					</ul>
 				</div>
 			</div>
