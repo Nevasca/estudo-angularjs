@@ -1,6 +1,6 @@
 (function(){
 	
-	var app = angular.module("gestaoProdutos", ["common.services", "ui.router", "produtoResourceMock"]); 
+	var app = angular.module("gestaoProdutos", ["common.services", "ui.router", "ui.mask", "ui.bootstrap", "ngMessages", "produtoResourceMock"]); 
 	//Quando nao for mais usar o falso webservice, retirar a dependencia de 'produtoResourceMock'	
 
 	app.config(["$stateProvider", "$urlRouterProvider",
@@ -39,10 +39,10 @@
 					url: "/preco",
 					templateUrl: "app/produtos/produtoEditPrecoView.html"
 				})
-				.state("produtoEdit.tags", {
-					url: "/tags",
-					templateUrl: "app/produtos/produtoEditTagsView.html"
-				})
+				//.state("produtoEdit.tags", {
+				//	url: "/tags",
+				//	templateUrl: "app/produtos/produtoEditTagsView.html"
+				//})
 				.state("produtoDetalhes", {
 					url: "/produtos/:id",
 					templateUrl: "app/produtos/produtoDetalhesView.html",
@@ -58,4 +58,5 @@
 				});
 		}]
 	);
+
 }());

@@ -4,8 +4,10 @@
 		<meta charset="UTF-8">
 		<title>Gerenciamento de Produtos</title>		
 		<!-- Style sheets -->
-		<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.css"/>				
+		<link type="text/css" rel="stylesheet" href="../resources/css/bootstrap.css"/>
+		<link type="text/css" rel="stylesheet" href="../resources/css/toastr.css"/>
 		<link type="text/css" rel="stylesheet" href="css/app.css"/>
+
 
 		<!-- Bibliotecas -->
 		<script type="text/javascript" src="../resources/js/jquery-2.2.0.min.js"></script>
@@ -13,22 +15,27 @@
 		<script type="text/javascript" src="../resources/js/angular-resource.js"></script>
 		<script type="text/javascript" src="../resources/js/angular-mocks.js"></script>
 		<script type="text/javascript" src="../resources/js/angular-ui-router.js"></script>
-		<script type="text/javascript" src="../resources/js/bootstrap.js"></script>		
+		<script type="text/javascript" src="../resources/js/angular-ui-router.js"></script>
+		<script type="text/javascript" src="../resources/js/angular-messages.js"></script>
+		<script type="text/javascript" src="../resources/js/mask.js"></script>
+		<script type="text/javascript" src="../resources/js/ui-bootstrap-tpls-1.2.5.js"></script>
+		<script type="text/javascript" src="../resources/js/toastr.js"></script>
 
 		<!-- Aplicacao -->
 		<script type="text/javascript" src="app/app.js"></script>
 
 		<!-- Services -->
 		<script type="text/javascript" src="common/services/common.services.js"></script>
-		<script type="text/javascript" src="common/services/produtoResource.js"></script>
+		<script type="text/javascript" src="common/services/produtoResource.js"></script>		
 		<script type="text/javascript" src="common/services/produtoResourceMock.js"></script>
+		<script type="text/javascript" src="common/services/produtoService.js"></script>
 
 		<!-- Controllers Produtos-->
 		<script type="text/javascript" src="app/produtos/produtoListaCtrl.js"></script>
 		<script type="text/javascript" src="app/produtos/produtoDetalhesCtrl.js"></script>
 		<script type="text/javascript" src="app/produtos/produtoEditCtrl.js"></script>
-	</head>
-	<body ng-app="gestaoProdutos">
+	</head>	
+	<body ng-app="gestaoProdutos">		
 		<!-- Menu Superior -->
 		<nav class="navbar navbar-inverse">
 			<div class="container">

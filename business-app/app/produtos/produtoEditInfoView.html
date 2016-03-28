@@ -1,1 +1,81 @@
-<div>Informações Básicas do Produto</div>
+<form name="produtoForm" class="form-horizontal" role="form" novalidate>
+	<fieldset>
+		<legend>Informações Básicas do Produto</legend>
+		<div class="form-group" ng-class="{'has-error': produtoForm.inputNomeProduto.$invalid && produtoForm.inputNomeProduto.$dirty}">
+			<label for="inputNomeProduto" class="col-md-2 control-label">Nome</label>
+			<div class="col-md-4">
+				<input id="inputNomeProduto"
+					   name="inputNomeProduto"
+					   type="text"
+					   class="form-control"
+					   placeholder="Nome do Produto (obrigatório)"
+					   ng-model="produto.nome" 
+					   required
+					   ng-minlength="4"
+					   ng-maxlength="12"/>
+			</div>
+			<span class="help-block has-error" ng-show="produtoForm.inputNomeProduto.$invalid && produtoForm.inputNomeProduto.$dirty">
+				<span ng-messages="produtoForm.inputNomeProduto.$error">
+					<span ng-message="required">Nome do produto é obrigatório</span>
+					<span ng-message="minlength">Mínimo de 4 caracteres</span>
+					<span ng-message="maxlength">Máximo de 12 caracteres</span>
+				</span>		
+			</span>				
+		</div>				
+		<div class="form-group" ng-class="{'has-error': produtoForm.inputCodigoProduto.$invalid && produtoForm.inputCodigoProduto.$dirty}">
+			<label for="inputCodigoProduto" class="col-md-2 control-label">Código</label>
+			<div class="col-md-4">
+				<input id="inputCodigoProduto"
+					   name="inputCodigoProduto"
+					   type="text"
+					   class="form-control"
+					   ui-mask="AAA-**** (obrigatório)"
+					   ng-model="produto.codigo"
+					   required/>
+			</div>
+			<span class="help-block has-error" ng-show="produtoForm.inputCodigoProduto.$invalid && produtoForm.inputCodigoProduto.$dirty">
+				<span ng-messages="produtoForm.inputCodigoProduto.$error">
+					<span ng-message="required">Código do produto é obrigatório</span>
+				</span>		
+			</span>
+		</div>
+		<div class="form-group">
+			<label for="inputDataLancamento" class="col-md-2 control-label">Data Lançamento</label>
+			<div class="col-md-4">
+				<div class="input-group">
+					<input class="form-control"
+						   id="inputDataLancamento"
+						   name="inputDataLancamento"
+						   type="text" 
+						   uib-datepicker-popup="MMM dd, yyyy" 
+						   is-open="popup.opened" 
+						   ng-model="produto.dataLancamento"/>
+					<span class="input-group-btn">
+						<button class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="inputDescricao" class="col-md-2 control-label">Descrição</label>
+			<div class="col-md-10">
+				<textarea id="inputDescricao"
+						  name="inputDescricao"
+					      class="form-control"
+					      placeholder="Descrição do Produto"
+					      rows="5"
+					      ng-model="produto.descricao"/>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-4 col-md-offset-2">
+				<span>
+					<button class="btn btn-primary" style="width: 100px; margin-right: 10px" ng-click="submit(produtoForm.$valid)">Salvar</button>					
+				</span>
+				<span>
+					<button class="btn btn-default" ng-click="cancelar()">Cancelar</button>					
+				</span>
+			</div>
+		</div>
+	</fieldset>
+</form>

@@ -2,9 +2,9 @@
 
 	angular
 		.module("gestaoProdutos")
-		.controller("ProdutoDetalhesCtrl", ["$scope", "produto", ProdutoDetalhesCtrl]);
+		.controller("ProdutoDetalhesCtrl", ["$scope", "produto", "produtoService", ProdutoDetalhesCtrl]);
 
-	function ProdutoDetalhesCtrl($scope, produto) {
+	function ProdutoDetalhesCtrl($scope, produto, produtoService) {
 
 		$scope.produto = produto;
 		/*$scope.produto = {"id": 1,
@@ -16,6 +16,7 @@
 		};*/
 
 		$scope.titulo = "Detalhes do Produto: " + $scope.produto.nome;
+		$scope.margemPorcentagem = produtoService.calcularMargemPorcentagem($scope.produto.preco, $scope.produto.custo);
 
 	}
 
