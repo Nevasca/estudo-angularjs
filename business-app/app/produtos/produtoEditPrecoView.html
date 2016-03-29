@@ -1,1 +1,118 @@
-<div>Detalhes do Preço do Produto</div>
+<form class="form-horizontal" name="produtoPrecoForm" novalidate>
+	<fieldset>
+		<legend>Detalhes do Preço do Produto</legend>
+
+		<div class="form-group" ng-class="{'has-error': produtoPrecoForm.inputCusto.$invalid && produtoPrecoForm.inputCusto.$dirty}">
+			<label class="col-md-2 control-label" for="inputCusto">Custo</label>
+			<div class="col-md-4">
+				<input class="form-control"
+					   id="inputCusto"
+					   name="inputCusto"
+					   type="number"					   
+					   placeholder="Nosso Custo"
+					   ng-model="produto.custo"
+					   style="text-align: right;">
+			</div>
+			<span class="help-block" ng-show="produtoPrecoForm.inputCusto.$invalid && produtoPrecoForm.inputCusto.$dirty">			
+				O custo do produto precisa ser um número válido ou em branco
+			</span>
+		</div>
+		<div class="form-group" style="margin-bottom: 0;">
+			<label class="col-md-2 control-label">Calcular preço</label>
+			<div class="col-md-4 btn-group">
+				<label class="btn btn-default"
+				       ng-model="formulario.precoOpcao"
+				       uib-btn-radio="'percent'"
+				       style="width: 50%">Margem %</label>
+				<label class="btn btn-default"
+				       ng-model="formulario.precoOpcao"
+				       uib-btn-radio="'amount'"
+				       style="width: 50%">Margem R$</label>
+			</div>
+		</div>
+		<div class="form-group" 
+			ng-if="formulario.precoOpcao == 'percent'" 
+			ng-class="{'has-error': produtoPrecoForm.inputMargemPorcentagem.$invalid && 
+									produtoPrecoForm.inputMargemPorcentagem.$dirty}">
+			<div class="col-md-6 col-md-offset-2">
+				<label class="control-label" for="inputMargemPorcentagem">Margem Porcentagem</label>
+				<div class="form-group row" style="margin-bottom:0;">
+					<div class="col-md-4">
+						<input class="form-control"
+							id="inputMargemPorcentagem"
+							name="inputMargemPorcentagem"
+							type="number"					
+							placeholder="Margem %"
+							ng-model="formulario.margemPorcentagem"
+							style="text-align: right"/>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-default" title="Calcular o preço através do custo + porcentagem" ng-click="calcularPreco()">
+							Calcular
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group" 
+			ng-if="formulario.precoOpcao == 'amount'" 
+			ng-class="{'has-error': produtoPrecoForm.inputMargemAmount.$invalid && 
+									produtoPrecoForm.inputMargemAmount.$dirty}">
+			<div class="col-md-6 col-md-offset-2">
+				<label class="control-label" for="inputMargemAmount">Margem Quantia</label>
+				<div class="form-group row" style="margin-bottom:0;">
+					<div class="col-md-4">
+						<input class="form-control"
+							id="inputMargemAmount"
+							name="inputMargemAmount"
+							type="number"							
+							placeholder="Margem R$"
+							ng-model="formulario.margemAmount"
+							style="text-align: right"/>
+					</div>
+					<div class="col-md-2">
+						<button type="button" class="btn btn-default" title="Calcular o preço através do custo + quantia" ng-click="calcularPreco()">
+							Calcular
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-md-2 control-label" for="inputPreco">Preço</label>
+			<div class="col-md-4">
+				<input class="form-control"
+					id="inputPreco"
+					name="inputPreco"
+					type="number"					
+					placeholder="Preço"
+					required
+					ng-model="produto.preco"
+					style="text-align: right;"/>
+			</div>
+			<span class="help-block" ng-show="produtoPrecoForm.inputPreco.$invalid && produtoPrecoForm.inputPreco.$dirty">
+				O preço deve ser um número válido
+			</span>
+		</div>
+		<div class="row">
+			<div class="col-md-2" style="text-align: right;">Margem</div>
+			<div class="col-md-4">{{getMargemPorcentagem() | number:0}}%</div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-4 col-md-offset-2">
+				<span>
+					<button class="btn btn-primary"
+						style="width: 100px; margin-right: 10px;"
+						type="submit"
+						ng-disabled="produtoPrecoForm.$invalid"
+						ng-click="submit(produtoPrecoForm.$valid)">
+						Salvar
+					</button>
+				</span>
+				<span>
+					<button class="btn btn-default" style="width: 80px" ng-click="cancelar()">Cancelar</button>
+				</span>
+			</div>
+		</div>
+	</fieldset>
+</form>

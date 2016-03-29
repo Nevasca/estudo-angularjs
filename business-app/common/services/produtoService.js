@@ -11,8 +11,8 @@
 			if (preco && custo) {
 				margem = (100 * (preco - custo)) / preco;
 			}
-			margem = Math.round(margem);
-			return margem;
+			margem = Math.round(margem);			
+			return margem;			
 		}
 
 		function calcularMargemLucro(preco, custo) {
@@ -34,6 +34,7 @@
 
 		function calcularPrecoPorLucro(custo, lucro) {
 			var preco = custo;
+			console.log(custo + " | " + lucro);
 			if(custo && lucro) {
 				preco = custo + lucro;
 				preco = (Math.round(preco * 100))/ 100;
@@ -46,7 +47,7 @@
 			calcularMargemLucro: calcularMargemLucro,
 			calcularPrecoPorPorcentagem: calcularPrecoPorPorcentagem,
 			calcularPrecoPorLucro: calcularPrecoPorLucro
-		}
+		};
 	}
 
 }());

@@ -12,6 +12,7 @@
 		<!-- Bibliotecas -->
 		<script type="text/javascript" src="../resources/js/jquery-2.2.0.min.js"></script>
 		<script type="text/javascript" src="../resources/js/angular.js"></script>
+		<script type="text/javascript" src="../resources/js/d3.js"></script>
 		<script type="text/javascript" src="../resources/js/angular-resource.js"></script>
 		<script type="text/javascript" src="../resources/js/angular-mocks.js"></script>
 		<script type="text/javascript" src="../resources/js/angular-ui-router.js"></script>
@@ -19,6 +20,7 @@
 		<script type="text/javascript" src="../resources/js/angular-messages.js"></script>
 		<script type="text/javascript" src="../resources/js/mask.js"></script>
 		<script type="text/javascript" src="../resources/js/ui-bootstrap-tpls-1.2.5.js"></script>
+		<script type="text/javascript" src="../resources/js/angular-charts.js"></script>
 		<script type="text/javascript" src="../resources/js/toastr.js"></script>
 
 		<!-- Aplicacao -->
@@ -34,6 +36,9 @@
 		<script type="text/javascript" src="app/produtos/produtoListaCtrl.js"></script>
 		<script type="text/javascript" src="app/produtos/produtoDetalhesCtrl.js"></script>
 		<script type="text/javascript" src="app/produtos/produtoEditCtrl.js"></script>
+
+		<!-- Controllers Precos -->
+		<script type="text/javascript" src="app/precos/precoAnalisesCtrl.js"></script>
 	</head>	
 	<body ng-app="gestaoProdutos">		
 		<!-- Menu Superior -->
@@ -50,8 +55,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav">
-						<li><a ui-sref="produtoLista">Lista de Produtos</a></li>
+						<li><a ui-sref="produtoLista"><i class="glyphicon glyphicon-book"></i> Lista de Produtos</a></li>
 						<li><a ui-sref="produtoEdit.info({id:0})"><i class="glyphicon glyphicon-plus"></i> Adicionar Produto</a></li>
+						<li><a ui-sref="precoAnalises"><i class="glyphicon glyphicon-stats"></i> Análise de Preços</a></li>
 					</ul>
 				</div>
 			</div>

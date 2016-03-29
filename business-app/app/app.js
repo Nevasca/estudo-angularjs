@@ -1,7 +1,27 @@
 (function(){
 	
-	var app = angular.module("gestaoProdutos", ["common.services", "ui.router", "ui.mask", "ui.bootstrap", "ngMessages", "produtoResourceMock"]); 
+	var app = angular.module("gestaoProdutos", ["common.services", 
+												"ui.router", 
+												"ui.mask", 
+												"ui.bootstrap", 
+												"ngMessages", 
+												"angularCharts", 
+												"produtoResourceMock"]); 
 	//Quando nao for mais usar o falso webservice, retirar a dependencia de 'produtoResourceMock'	
+
+	//Usado para dar uma mensagem de erro personalizada
+	app.config(function ($provide) {
+		$provide.decorator("$exceptionHandler", 
+			["$delegate", 
+				function($delegate) {
+					return function(exception, cause) {
+						exception.message = "Por favor, entre em contato com o Help Desk! \n Mensagem: " +
+							exception.message;
+						$delegate(exception, cause);
+						alert(exception.message);
+					};
+				}]);
+	});
 
 	app.config(["$stateProvider", "$urlRouterProvider",
 		function($stateProvider, $urlRouterProvider){
@@ -55,6 +75,27 @@
 							return produtoResource.get({id: id}).$promise;
 						}
 					}
+				})
+				.state("precoAnalises", {
+					url: "/precoAnalises",
+					templateUrl: "app/precos/precoAnalisesView.html",
+					controller: "PrecoAnalisesCtrl",
+					resolve: {
+						produtoResource: "produtoResource",
+						produtos: function(produtoResource) {
+							return produtoResource.query(function(response) {
+								//Nao e necessario implementar a funcao de sucesso
+							},
+							function(response) {
+								if(response.status == 404) {
+									alert("Erro ao acessar o servidor: " + response.config.method + " " + response.config.url);
+								}
+								else {
+									alert(response.statusText);
+								}
+							}).$promise;
+						}
+					}					
 				});
 		}]
 	);

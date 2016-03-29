@@ -33,3 +33,8 @@ form legend {
 	background: #337AB7;
 	color: #FFF;
 }
+
+.chart {
+	width: 100%;
+	height: 300px;
+}
