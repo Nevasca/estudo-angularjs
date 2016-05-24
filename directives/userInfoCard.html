@@ -1,0 +1,21 @@
+<div class="panel panel-primary">
+	<div class="panel-heading" ng-click="collapse()">{{usuario.nome}}</div>
+	<div class="panel-body" ng-hide="collapsed">
+		<div ng-show='usuario.end'>
+			<h4>Endereço</h4>
+			Regiao: {{usuario.end.regiao}}<br/>
+			Lugar: {{usuario.end.lugar}}
+		</div>
+		<h4>Amigos</h4>
+		<ul>
+			<li ng-repeat='amigo in usuario.amigos'>
+				{{amigo}}
+				<remove-amigo metodo="removerAmigo(amigo)"></remove-amigo>				
+			</li>
+		</ul>
+		<div ng-show="!!usuario.status">
+			Status: {{usuario.status}}
+		</div>
+		<button ng-show="!usuario.status" class="btn btn-danger" ng-click="matarPersonagem(usuario)">Matar</button>
+	</div>
+</div>
