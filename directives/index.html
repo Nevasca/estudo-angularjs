@@ -11,8 +11,16 @@
 		<script type="text/javascript" src="script.js"></script>
 	</head>
 
-	<body ng-controller="mainCtrl" class="container">		
+	<body ng-controller="mainCtrl" class="container" my-click="clickHandler(data)">		
+		<h2>{{data.message}}</h2>
 		<user-info-card usuario="usuario1" collapsed="true"></user-info-card>		
 		<user-info-card usuario="usuario2" collapsed="false"></user-info-card>
+		
+		<video id="vid" spacebar-support event-pause="handlePause(evt)" controls preload="none" poster="johnCena.jpg" style="width: 400px; height: 224px">
+			<source src="johnCena.mp4" type="video/mp4"></source>
+		</video>
+
+		<div font-scale="size">Texto para modificar</div>
+		<input ng-model="size"/>
 	</body>
 </html>

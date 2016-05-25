@@ -14,7 +14,7 @@ angular.module('app').controller('mainCtrl', function($scope) {
 			"Tormund",
 			"Davos"
 		]
-	}
+	};
 
 	$scope.usuario2 = {
 		nome: 'Sansa Stark',
@@ -26,7 +26,18 @@ angular.module('app').controller('mainCtrl', function($scope) {
 			"Brienne",
 			"Jon"			
 		]
-	}	
+	};
+
+	$scope.handlePause = function(e) {
+		console.log("Video foi pausado");
+	}
+
+	$scope.data = {message: "Não fui clicado"};
+	$scope.clickHandler = function(p) {
+		p.message = "Eu fui clicado";
+	}
+
+	$scope.size = 150;
 });
 
 //Registra um novo directive no modulo
@@ -87,6 +98,67 @@ angular.module('app').directive('removeAmigo', function() {
 				$scope.notificarParent();
 			}
 
+		}
+	}
+});
+
+//Decorator Directives -----------------------------------------
+//Quando o usuario aperta a barra de espaco, pausa ou reproduz o video
+angular.module('app').directive('spacebarSupport', function() {
+	return {
+		restrict: "A",
+		link: function(scope, el, attrs) { //el = elemento que esta o atributo, attrs = array de atributos do elemento
+			$("body").on("keypress", function(evt) {
+				var vidEl = el[0]; //Pega o elemento sem ser JQuery
+				if(evt.keyCode === 32) {//Espaco
+					if(vidEl.paused) {
+						vidEl.play();
+					}
+					else {
+						vidEl.pause();
+					}
+				}
+			});
+		}
+	}
+});
+
+//Chama uma funcao quando o video e pausado
+angular.module("app").directive("eventPause", function($parse) {
+	return {
+		restrict: "A",	
+		link: function(scope, el, attrs) {
+			var fn = $parse(attrs["eventPause"]); //Pega a referencia da funcao da string
+			el.on("pause", function(event) {
+				scope.$apply(function() { //Quando o evento nao e conhecido pelo Angular, como evento HTML, precisa desse apply para atualizar o binding
+					fn(scope, {evt: event});;
+				});
+			});
+		}
+	}
+});
+
+//Chama uma funcao quando o elemento e clicado
+angular.module("app").directive("myClick", function($parse) {
+	return {
+		link: function(scope, el, attrs) {
+			var fn = $parse(attrs["myClick"]);
+			el.on("click", function() {
+				scope.$apply(function() {
+					fn(scope);
+				});
+			});
+		}
+	}
+});
+
+//Muda o tamanho da fonte
+angular.module("app").directive("fontScale", function() {
+	return {
+		link: function(scope, el, attrs) {
+			scope.$watch(attrs["fontScale"], function(newVal, oldVal) {
+				el.css("font-size", newVal + "%");
+			});
 		}
 	}
 });
